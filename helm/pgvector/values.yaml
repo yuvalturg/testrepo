@@ -18,6 +18,8 @@ fullnameOverride: "pgvector"
 serviceAccount:
   create: false
 
+gizmo: kaka
+
 podAnnotations: {}
 podLabels: {}
 
