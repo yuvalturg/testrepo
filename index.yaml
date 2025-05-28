@@ -3,7 +3,17 @@ entries:
   pgvector:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-05-28T17:15:39.351603923Z"
+    created: "2025-05-28T17:23:16.573166664Z"
+    description: A Helm chart for Kubernetes
+    digest: 112380b447a49b9d1114c4c43babec994051792cd98a70bb83727908238d6b2b
+    name: pgvector
+    type: application
+    urls:
+    - https://yuvalturg.github.io/testrepo/pgvector-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-05-28T17:23:16.572795468Z"
     description: A Helm chart for Kubernetes
     digest: 69a329069b72ded7f93e88fe0a33a3c58b8308b0427dfecb10ad523de8d7391e
     name: pgvector
@@ -11,4 +21,4 @@ entries:
     urls:
     - https://yuvalturg.github.io/testrepo/pgvector-0.1.0.tgz
     version: 0.1.0
-generated: "2025-05-28T17:15:39.351050716Z"
+generated: "2025-05-28T17:23:16.572265786Z"
