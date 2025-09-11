@@ -1,9 +1,42 @@
 apiVersion: v1
 entries:
+  foo:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-09-11T17:38:07.559789031Z"
+    description: A Helm chart for Kubernetes
+    digest: 68c12fb6a45d335b089ee19205274bdc41dfb7950255b2ff2ca5794118ae5584
+    name: foo
+    type: application
+    urls:
+    - https://yuvalturg.github.io/testrepo/foo-0.2.0.tgz
+    version: 0.2.0
+  gizmo:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-09-11T17:38:07.560164357Z"
+    description: A Helm chart for Kubernetes
+    digest: c691618cc05ccbc9130221dc85a29c8b0d7fe616c0212e66b3adfda4bd833da8
+    name: gizmo
+    type: application
+    urls:
+    - https://yuvalturg.github.io/testrepo/gizmo-0.2.0.tgz
+    version: 0.2.0
+  kaka:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-09-11T17:38:07.560524875Z"
+    description: A Helm chart for Kubernetes
+    digest: 2cadbe81f4ce1f30a3b59435eddb37dcc49ef3bd184bd7da26332fb4a66931ae
+    name: kaka
+    type: application
+    urls:
+    - https://yuvalturg.github.io/testrepo/kaka-0.2.0.tgz
+    version: 0.2.0
   pgvector:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-09-11T17:12:04.220130195Z"
+    created: "2025-09-11T17:38:07.561228748Z"
     description: A Helm chart for Kubernetes
     digest: 112380b447a49b9d1114c4c43babec994051792cd98a70bb83727908238d6b2b
     name: pgvector
@@ -13,7 +46,7 @@ entries:
     version: 0.2.0
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-09-11T17:12:04.219760602Z"
+    created: "2025-09-11T17:38:07.560886505Z"
     description: A Helm chart for Kubernetes
     digest: 69a329069b72ded7f93e88fe0a33a3c58b8308b0427dfecb10ad523de8d7391e
     name: pgvector
@@ -21,4 +54,4 @@ entries:
     urls:
     - https://yuvalturg.github.io/testrepo/pgvector-0.1.0.tgz
     version: 0.1.0
-generated: "2025-09-11T17:12:04.219217562Z"
+generated: "2025-09-11T17:38:07.559237154Z"
