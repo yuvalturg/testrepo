@@ -34,7 +34,7 @@ jobs:
                 "name": "foo",
                 "file": "foo/Containerfile",
                 "context": "foo/src",
-                "chart": "foo/helm/Chart.yaml",
+                "chart": "foo/helm/Chart.yaml"
               },
               {
                 "name": "gizmo",
