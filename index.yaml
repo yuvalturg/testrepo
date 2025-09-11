@@ -3,9 +3,9 @@ entries:
   foo:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-09-11T17:57:12.731310162Z"
+    created: "2025-09-11T17:59:43.630154077Z"
     description: A Helm chart for Kubernetes
-    digest: 1018d3a169d0fbb6876b10ab4003aa9a8755d7206a1d8c02865dbea84f085cc9
+    digest: 3e36dc9db140f89e44e8bceccd23e1f19e27158b8285d0feb7bbbdaf7a5228bc
     name: foo
     type: application
     urls:
@@ -14,7 +14,7 @@ entries:
   gizmo:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-09-11T17:57:12.73171388Z"
+    created: "2025-09-11T17:59:43.630502761Z"
     description: A Helm chart for Kubernetes
     digest: 432097654638b0a1c0ec5828c03b31d28aec5654380d03ca8d299edee0cce695
     name: gizmo
@@ -25,7 +25,7 @@ entries:
   kaka:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-09-11T17:57:12.73244847Z"
+    created: "2025-09-11T17:59:43.631200448Z"
     description: A Helm chart for Kubernetes
     digest: f44a3bf06ea8a37b27d464b1c33c1093278564e3e7cf92fd12fdfeeb4a7c6cc3
     name: kaka
@@ -35,7 +35,7 @@ entries:
     version: 0.2.1
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-09-11T17:57:12.732074758Z"
+    created: "2025-09-11T17:59:43.630864168Z"
     description: A Helm chart for Kubernetes
     digest: b711fd6081b78d72cac4de88f8f02ae8a78b42d06716a06b1c17daf02b74e37a
     name: kaka
@@ -46,7 +46,7 @@ entries:
   pgvector:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-09-11T17:57:12.733159676Z"
+    created: "2025-09-11T17:59:43.631935516Z"
     description: A Helm chart for Kubernetes
     digest: 112380b447a49b9d1114c4c43babec994051792cd98a70bb83727908238d6b2b
     name: pgvector
@@ -56,7 +56,7 @@ entries:
     version: 0.2.0
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-09-11T17:57:12.732823294Z"
+    created: "2025-09-11T17:59:43.631589728Z"
     description: A Helm chart for Kubernetes
     digest: 69a329069b72ded7f93e88fe0a33a3c58b8308b0427dfecb10ad523de8d7391e
     name: pgvector
@@ -64,4 +64,4 @@ entries:
     urls:
     - https://yuvalturg.github.io/testrepo/pgvector-0.1.0.tgz
     version: 0.1.0
-generated: "2025-09-11T17:57:12.730798561Z"
+generated: "2025-09-11T17:59:43.629626608Z"
