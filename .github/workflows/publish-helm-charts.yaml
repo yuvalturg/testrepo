@@ -51,12 +51,15 @@ jobs:
           ALL_HELM_COMPONENTS=$(find . -maxdepth 3 -name "Chart.yaml" -path "*/helm/Chart.yaml" | cut -d'/' -f2 | sort | jq -R -s 'split("\n") | map(select(length > 0))')
          
           echo "Changed files:"
+          echo "=============="
           echo "$CHANGED_FILES_JSON" | jq .
           
           echo "Original build matrix:"
+          echo "======================"
           echo "$ORIGINAL_MATRIX" | jq .
 
           echo "Helm components:"
+          echo "================"
           echo "$ALL_HELM_COMPONENTS" | jq .
 
           # Check if workflow changed and filter build matrix in one jq command
@@ -95,12 +98,14 @@ jobs:
             }
           ')
 
+          # Debug output
+          echo "Detected changes:"
+          echo "================="
+          echo "$RESULT" | jq .
+
           # Extract results
           echo "build-matrix=$(echo "$RESULT" | jq -c '.build_matrix')" >> $GITHUB_OUTPUT
           echo "changed-helm-components=$(echo "$RESULT" | jq -r '.changed_helm_components')" >> $GITHUB_OUTPUT
-
-          # Debug output
-          echo "$RESULT" | jq .
 
   build-and-push:
     needs: detect-changes
