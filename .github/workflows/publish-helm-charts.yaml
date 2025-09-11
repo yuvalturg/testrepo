@@ -52,7 +52,7 @@ jobs:
           echo "original is ok"
 
           # Get all helm components dynamically
-          ALL_HELM_COMPONENTS=$(find . -maxdepth 2 -name "Chart.yaml" -path "*/helm/Chart.yaml" | cut -d'/' -f2 | sort | jq -R -s 'split("\n") | map(select(length > 0))')
+          ALL_HELM_COMPONENTS=$(find . -maxdepth 3 -name "Chart.yaml" -path "*/helm/Chart.yaml" | cut -d'/' -f2 | sort | jq -R -s 'split("\n") | map(select(length > 0))')
 
           # Check if workflow changed and filter build matrix in one jq command
           RESULT=$(echo "$ORIGINAL_MATRIX" | jq --argjson changed_files "$CHANGED_FILES_JSON" --argjson all_helm_components "$ALL_HELM_COMPONENTS" '
