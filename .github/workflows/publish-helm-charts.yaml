@@ -15,7 +15,6 @@ jobs:
   detect-changes:
     runs-on: ubuntu-latest
     outputs:
-      workflow-changed: ${{ steps.changes.outputs.workflow-changed }}
       build-matrix: ${{ steps.changes.outputs.build-matrix }}
       changed-helm-components: ${{ steps.changes.outputs.changed-helm-components }}
     steps:
@@ -52,10 +51,12 @@ jobs:
           echo "$ORIGINAL_MATRIX" | jq .
           echo "original is ok"
 
+          # Get all helm components dynamically
+          ALL_HELM_COMPONENTS=$(find . -maxdepth 2 -name "Chart.yaml" -path "*/helm/Chart.yaml" | cut -d'/' -f2 | sort | jq -R -s 'split("\n") | map(select(length > 0))')
+
           # Check if workflow changed and filter build matrix in one jq command
-          RESULT=$(echo "$ORIGINAL_MATRIX" | jq --argjson changed_files "$CHANGED_FILES_JSON" '
+          RESULT=$(echo "$ORIGINAL_MATRIX" | jq --argjson changed_files "$CHANGED_FILES_JSON" --argjson all_helm_components "$ALL_HELM_COMPONENTS" '
             {
-              "workflow_changed": ($changed_files | any(test("^\\.github/workflows/"))),
               "build_matrix": (
                 if ($changed_files | any(test("^\\.github/workflows/"))) then
                   .
@@ -73,16 +74,23 @@ jobs:
                   }
                 end
               ),
-              "changed_helm_components": [
-                $changed_files[] |
-                select(test("/helm/")) |
-                split("/")[0]
-              ] | unique | join(",")
+              "changed_helm_components": (
+                if ($changed_files | any(test("^\\.github/workflows/"))) then
+                  # If workflow changed, get all helm components
+                  $all_helm_components | join(",")
+                else
+                  # Otherwise, only changed helm components
+                  [
+                    $changed_files[] |
+                    select(test("/helm/")) |
+                    split("/")[0]
+                  ] | unique | join(",")
+                end
+              )
             }
           ')
 
           # Extract results
-          echo "workflow-changed=$(echo "$RESULT" | jq -r '.workflow_changed')" >> $GITHUB_OUTPUT
           echo "build-matrix=$(echo "$RESULT" | jq -c '.build_matrix')" >> $GITHUB_OUTPUT
           echo "changed-helm-components=$(echo "$RESULT" | jq -r '.changed_helm_components')" >> $GITHUB_OUTPUT
 
@@ -103,13 +111,13 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: Log in to Quay.io
-        uses: docker/login-action@v3
-        with:
-          registry: quay.io
-          username: ${{ secrets.QUAY_USERNAME }}
-          password: ${{ secrets.QUAY_PASSWORD }}
-
+#      - name: Log in to Quay.io
+#        uses: docker/login-action@v3
+#        with:
+#          registry: quay.io
+#          username: ${{ secrets.QUAY_USERNAME }}
+#          password: ${{ secrets.QUAY_PASSWORD }}
+#
       - name: Extract version from Chart.yaml
         id: version
         run: |
@@ -121,7 +129,7 @@ jobs:
         with:
           context: ${{ matrix.context }}
           file: ${{ matrix.file }}
-          push: true
+          push: false
           tags: quay.io/yuvalturg/${{ matrix.name }}:${{ steps.version.outputs.tag }}
           build-args: |
             IMAGE_TAG=${{ steps.version.outputs.tag }}
