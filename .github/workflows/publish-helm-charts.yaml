@@ -71,11 +71,12 @@ jobs:
                 else
                   {
                     "include": [
-                      .include[] |
+                      .include[] as $item |
+                      $item |
                       select(
                         $changed_files | any(
-                          test("^" + .file + "$") or
-                          test("^" + .context + "/")
+                          . == $item.file or
+                          test("^" + ($item.context) + "/")
                         )
                       )
                     ]
