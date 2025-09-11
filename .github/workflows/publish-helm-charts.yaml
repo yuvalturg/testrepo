@@ -47,6 +47,7 @@ jobs:
 
           # Get changed files as JSON array (compare against main before this PR was merged)
           CHANGED_FILES_JSON=$(git diff --name-only ${{ github.event.before }}..HEAD | jq -R -s 'split("\n") | map(select(length > 0))')
+          echo "$CHANGED_FILES_JSON"
 
           # Check if workflow changed and filter build matrix in one jq command
           RESULT=$(echo "$ORIGINAL_MATRIX" | jq --argjson changed_files "$CHANGED_FILES_JSON" '
