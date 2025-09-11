@@ -1,12 +1,10 @@
-name: Package and Publish Helm Charts
+name: Build Packages and Publish Helm Charts
 
 on:
   push:
     branches:
-      - main
-    paths:
-      - 'helm/**'
-      - '.github/workflows/publish-helm-charts.yaml'
+      - 'main'
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -14,7 +12,119 @@ permissions:
   id-token: write
 
 jobs:
-  package:
+  detect-changes:
+    runs-on: ubuntu-latest
+    outputs:
+      workflow-changed: ${{ steps.changes.outputs.workflow-changed }}
+      build-matrix: ${{ steps.changes.outputs.build-matrix }}
+      changed-helm-components: ${{ steps.changes.outputs.changed-helm-components }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Detect changes
+        id: changes
+        run: |
+          # Define the original build matrix
+          ORIGINAL_MATRIX='{
+            "include": [
+              {
+                "name": "foo",
+                "file": "foo/Containerfile",
+                "context": "foo/src"
+                "chart": "foo/helm/Chart.yaml",
+              },
+              {
+                "name": "gizmo",
+                "file": "gizmo/Containerfile",
+                "context": "gizmo/src",
+                "chart": "gizmo/helm/Chart.yaml"
+              }
+            ]
+          }'
+
+          # Get changed files as JSON array (compare against main before this PR was merged)
+          CHANGED_FILES_JSON=$(git diff --name-only ${{ github.event.before }}..HEAD | jq -R -s 'split("\n") | map(select(length > 0))')
+
+          # Check if workflow changed and filter build matrix in one jq command
+          RESULT=$(echo "$ORIGINAL_MATRIX" | jq --argjson changed_files "$CHANGED_FILES_JSON" '
+            {
+              "workflow_changed": ($changed_files | any(test("^\\.github/workflows/"))),
+              "build_matrix": (
+                if ($changed_files | any(test("^\\.github/workflows/"))) then
+                  .
+                else
+                  {
+                    "include": [
+                      .include[] |
+                      select(
+                        $changed_files | any(
+                          test("^" + .file + "$") or
+                          test("^" + .context + "/")
+                        )
+                      )
+                    ]
+                  }
+                end
+              ),
+              "changed_helm_components": [
+                $changed_files[] |
+                select(test("/helm/")) |
+                split("/")[0]
+              ] | unique | join(",")
+            }
+          ')
+
+          # Extract results
+          echo "workflow-changed=$(echo "$RESULT" | jq -r '.workflow_changed')" >> $GITHUB_OUTPUT
+          echo "build-matrix=$(echo "$RESULT" | jq -c '.build_matrix')" >> $GITHUB_OUTPUT
+          echo "changed-helm-components=$(echo "$RESULT" | jq -r '.changed_helm_components')" >> $GITHUB_OUTPUT
+
+          # Debug output
+          echo "$RESULT" | jq .
+
+  build-and-push:
+    needs: detect-changes
+    if: needs.detect-changes.outputs.build-matrix != '{"include":[]}'
+    runs-on: ubuntu-latest
+    strategy:
+      matrix: ${{ fromJson(needs.detect-changes.outputs.build-matrix) }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to Quay.io
+        uses: docker/login-action@v3
+        with:
+          registry: quay.io
+          username: ${{ secrets.QUAY_USERNAME }}
+          password: ${{ secrets.QUAY_PASSWORD }}
+
+      - name: Extract version from Chart.yaml
+        id: version
+        run: |
+          version=$(grep '^version:' ${{ matrix.chart }} | awk '{print $2}')
+          echo "tag=$version" >> $GITHUB_OUTPUT
+
+      - name: Build and push ${{ matrix.name }}
+        uses: docker/build-push-action@v5
+        with:
+          context: ${{ matrix.context }}
+          file: ${{ matrix.file }}
+          push: true
+          tags: quay.io/yuvalturg/${{ matrix.name }}:${{ steps.version.outputs.tag }}
+          build-args: |
+            IMAGE_TAG=${{ steps.version.outputs.tag }}
+
+  package-helm-charts:
+    needs: detect-changes
+    if: needs.detect-changes.outputs.changed-helm-components != ''
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -34,9 +144,12 @@ jobs:
       - name: Package charts
         run: |
           mkdir -p gh-pages
-          for chart in helm/*; do
-            if [ -f "$chart/Chart.yaml" ]; then
-              helm package "$chart" -d gh-pages
+          IFS=',' read -ra CHANGED_COMPONENTS <<< "${{ needs.detect-changes.outputs.changed-helm-components }}"
+          for component in "${CHANGED_COMPONENTS[@]}"; do
+            if [ -f "$component/helm/Chart.yaml" ]; then
+              echo "Packaging helm chart for $component"
+              helm dependency update "$component/helm"
+              helm package "$component/helm" -d gh-pages
             fi
           done
 
