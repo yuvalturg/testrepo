@@ -3,7 +3,7 @@ entries:
   foo:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-10-17T01:58:52.701167201Z"
+    created: "2025-10-17T02:03:04.720798473Z"
     description: A Helm chart for Kubernetes
     digest: 8d3cefcea7d1650a54ab8852746f65c9958928bca44a04d20a5cba01fdc50fe2
     name: foo
@@ -13,7 +13,17 @@ entries:
     version: 0.2.0+3
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-10-17T01:58:52.701546339Z"
+    created: "2025-10-17T02:03:04.721198529Z"
+    description: A Helm chart for Kubernetes
+    digest: bf31aa8724250670b3d899352aa7e2527188d282e3e84f7fb83ce6f61cd065c1
+    name: foo
+    type: application
+    urls:
+    - https://rh-ai-quickstart.github.io/ai-architecture-charts/foo-0.2.0+4.tgz
+    version: 0.2.0+4
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-10-17T02:03:04.721548293Z"
     description: A Helm chart for Kubernetes
     digest: 3e36dc9db140f89e44e8bceccd23e1f19e27158b8285d0feb7bbbdaf7a5228bc
     name: foo
@@ -24,7 +34,7 @@ entries:
   gizmo:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-10-17T01:58:52.701887066Z"
+    created: "2025-10-17T02:03:04.721908265Z"
     description: A Helm chart for Kubernetes
     digest: 19e9804df47b279defe6d3e16baeacca8ade213263cfbc3ee82ccc79d9582e1b
     name: gizmo
@@ -34,7 +44,17 @@ entries:
     version: 0.2.0+3
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-10-17T01:58:52.702265423Z"
+    created: "2025-10-17T02:03:04.722272505Z"
+    description: A Helm chart for Kubernetes
+    digest: d9325675c6a15bd683edcc789439827d4aa2c5eba160a335715b23f24401e562
+    name: gizmo
+    type: application
+    urls:
+    - https://rh-ai-quickstart.github.io/ai-architecture-charts/gizmo-0.2.0+4.tgz
+    version: 0.2.0+4
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-10-17T02:03:04.722643328Z"
     description: A Helm chart for Kubernetes
     digest: 432097654638b0a1c0ec5828c03b31d28aec5654380d03ca8d299edee0cce695
     name: gizmo
@@ -45,7 +65,7 @@ entries:
   kaka:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-10-17T01:58:52.702921669Z"
+    created: "2025-10-17T02:03:04.723375221Z"
     description: A Helm chart for Kubernetes
     digest: ff46632a718c7867624ac71a11047aba3e77d70ddb5e07b38a93c3a2ffa61469
     name: kaka
@@ -55,7 +75,17 @@ entries:
     version: 0.2.1+3
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-10-17T01:58:52.703273797Z"
+    created: "2025-10-17T02:03:04.723720566Z"
+    description: A Helm chart for Kubernetes
+    digest: be7785a867ef794c7f98544a8556ab9549d2102570698d536f2747e8b7aefe1c
+    name: kaka
+    type: application
+    urls:
+    - https://rh-ai-quickstart.github.io/ai-architecture-charts/kaka-0.2.1+4.tgz
+    version: 0.2.1+4
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-10-17T02:03:04.724214699Z"
     description: A Helm chart for Kubernetes
     digest: f44a3bf06ea8a37b27d464b1c33c1093278564e3e7cf92fd12fdfeeb4a7c6cc3
     name: kaka
@@ -65,7 +95,7 @@ entries:
     version: 0.2.1
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-10-17T01:58:52.702599137Z"
+    created: "2025-10-17T02:03:04.722970208Z"
     description: A Helm chart for Kubernetes
     digest: b711fd6081b78d72cac4de88f8f02ae8a78b42d06716a06b1c17daf02b74e37a
     name: kaka
@@ -76,7 +106,7 @@ entries:
   pgvector:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-10-17T01:58:52.703926667Z"
+    created: "2025-10-17T02:03:04.725537364Z"
     description: A Helm chart for Kubernetes
     digest: 112380b447a49b9d1114c4c43babec994051792cd98a70bb83727908238d6b2b
     name: pgvector
@@ -86,7 +116,7 @@ entries:
     version: 0.2.0
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-10-17T01:58:52.703599185Z"
+    created: "2025-10-17T02:03:04.72513877Z"
     description: A Helm chart for Kubernetes
     digest: 69a329069b72ded7f93e88fe0a33a3c58b8308b0427dfecb10ad523de8d7391e
     name: pgvector
@@ -94,4 +124,4 @@ entries:
     urls:
     - https://rh-ai-quickstart.github.io/ai-architecture-charts/pgvector-0.1.0.tgz
     version: 0.1.0
-generated: "2025-10-17T01:58:52.700627542Z"
+generated: "2025-10-17T02:03:04.720270156Z"
