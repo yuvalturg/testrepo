@@ -1,0 +1,4 @@
+builds:
+  - name: gizmo
+    containerfile: Containerfile
+    context: src

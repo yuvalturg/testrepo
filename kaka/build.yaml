@@ -1,0 +1,4 @@
+builds:
+  - name: kaka
+    containerfile: Containerfile
+    context: src

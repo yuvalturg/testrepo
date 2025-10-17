@@ -1,0 +1,4 @@
+builds:
+  - name: foo
+    containerfile: Containerfile
+    context: src
