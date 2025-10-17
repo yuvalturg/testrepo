@@ -172,29 +172,31 @@ jobs:
 
             echo "Processing $component..."
 
-            # Read current version (might have +N from previous build)
+            # Read current version
             current_version=$(grep '^version:' "$CHART_PATH" | awk '{print $2}')
-
-            # Strip existing +N to get base version
-            base_version="${current_version%+*}"
-
             echo "  Current version: $current_version"
-            echo "  Base version: $base_version"
 
-            # Count existing tags for this base version
-            tag_pattern="${component}-${base_version}+*"
-            existing_count=$(git tag -l "$tag_pattern" | wc -l)
-            next_build=$((existing_count + 1))
+            # Check if tag exists for this version
+            tag_name="${component}-${current_version}"
+            if git rev-parse "$tag_name" >/dev/null 2>&1; then
+              echo "  Tag $tag_name already exists, auto-incrementing patch version"
 
-            # Create new version with build number
-            new_version="${base_version}+${next_build}"
-            echo "  New version: $new_version"
+              # Parse version
+              IFS='.' read -r major minor patch <<< "$current_version"
 
-            # Update Chart.yaml
+              # Increment patch
+              new_patch=$((patch + 1))
+              new_version="${major}.${minor}.${new_patch}"
+
+              echo "  Auto-incremented to: $new_version"
+            else
+              echo "  Tag $tag_name does not exist, using current version"
+              new_version="$current_version"
+            fi
+
+            # Update both version and appVersion to be the same
             sed -i "s/^version: .*/version: $new_version/" "$CHART_PATH"
-
-            # Get appVersion for tag message
-            app_version=$(grep '^appVersion:' "$CHART_PATH" | awk '{print $2}' | tr -d '"')
+            sed -i "s/^appVersion: .*/appVersion: \"$new_version\"/" "$CHART_PATH"
 
             # Commit this component's version update
             git add "$CHART_PATH"
@@ -211,7 +213,6 @@ jobs:
             git tag -a "$tag_name" -m "Release ${component} version ${new_version}
 
             Version: ${new_version}
-            App version: ${app_version}
             Commit: $(git rev-parse --short HEAD)"
 
             echo "Created commit and tag: $tag_name (SHA: $COMMIT_SHA)"
@@ -257,20 +258,17 @@ jobs:
       - name: Extract version information
         id: version
         run: |
-          # Extract full version (already has +N from update-versions job)
-          full_version=$(grep '^version:' ${{ matrix.chart }} | awk '{print $2}')
-          app_version=$(grep '^appVersion:' ${{ matrix.chart }} | awk '{print $2}' | tr -d '"')
+          # Extract version (appVersion = version, always in sync)
+          version=$(grep '^version:' ${{ matrix.chart }} | awk '{print $2}')
 
-          echo "full_version=$full_version" >> $GITHUB_OUTPUT
-          echo "app_version=$app_version" >> $GITHUB_OUTPUT
+          echo "version=$version" >> $GITHUB_OUTPUT
 
           # Get short commit SHA (7 characters)
           short_sha=$(git rev-parse --short HEAD)
           echo "short_sha=$short_sha" >> $GITHUB_OUTPUT
 
           echo "Component: ${{ matrix.name }}"
-          echo "  Full version: $full_version"
-          echo "  App version (APP_VERSION): $app_version"
+          echo "  Version: $version"
           echo "  Git SHA: $short_sha"
 
       - name: Build and push ${{ matrix.name }}
@@ -280,11 +278,9 @@ jobs:
           file: ${{ matrix.file }}
           push: true
           tags: |
-            quay.io/yuvalturg/${{ matrix.name }}:${{ steps.version.outputs.full_version }}
+            quay.io/yuvalturg/${{ matrix.name }}:${{ steps.version.outputs.version }}
             quay.io/yuvalturg/${{ matrix.name }}:${{ steps.version.outputs.short_sha }}
             quay.io/yuvalturg/${{ matrix.name }}:latest
-          build-args: |
-            APP_VERSION=${{ steps.version.outputs.app_version }}
 
   package-helm-charts:
     needs: [detect-changes, update-versions-and-tag]
