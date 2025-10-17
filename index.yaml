@@ -3,65 +3,95 @@ entries:
   foo:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-09-11T17:59:43.630154077Z"
+    created: "2025-10-17T01:58:52.701167201Z"
+    description: A Helm chart for Kubernetes
+    digest: 8d3cefcea7d1650a54ab8852746f65c9958928bca44a04d20a5cba01fdc50fe2
+    name: foo
+    type: application
+    urls:
+    - https://rh-ai-quickstart.github.io/ai-architecture-charts/foo-0.2.0+3.tgz
+    version: 0.2.0+3
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-10-17T01:58:52.701546339Z"
     description: A Helm chart for Kubernetes
     digest: 3e36dc9db140f89e44e8bceccd23e1f19e27158b8285d0feb7bbbdaf7a5228bc
     name: foo
     type: application
     urls:
-    - https://yuvalturg.github.io/testrepo/foo-0.2.0.tgz
+    - https://rh-ai-quickstart.github.io/ai-architecture-charts/foo-0.2.0.tgz
     version: 0.2.0
   gizmo:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-09-11T17:59:43.630502761Z"
+    created: "2025-10-17T01:58:52.701887066Z"
+    description: A Helm chart for Kubernetes
+    digest: 19e9804df47b279defe6d3e16baeacca8ade213263cfbc3ee82ccc79d9582e1b
+    name: gizmo
+    type: application
+    urls:
+    - https://rh-ai-quickstart.github.io/ai-architecture-charts/gizmo-0.2.0+3.tgz
+    version: 0.2.0+3
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-10-17T01:58:52.702265423Z"
     description: A Helm chart for Kubernetes
     digest: 432097654638b0a1c0ec5828c03b31d28aec5654380d03ca8d299edee0cce695
     name: gizmo
     type: application
     urls:
-    - https://yuvalturg.github.io/testrepo/gizmo-0.2.0.tgz
+    - https://rh-ai-quickstart.github.io/ai-architecture-charts/gizmo-0.2.0.tgz
     version: 0.2.0
   kaka:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-09-11T17:59:43.631200448Z"
+    created: "2025-10-17T01:58:52.702921669Z"
+    description: A Helm chart for Kubernetes
+    digest: ff46632a718c7867624ac71a11047aba3e77d70ddb5e07b38a93c3a2ffa61469
+    name: kaka
+    type: application
+    urls:
+    - https://rh-ai-quickstart.github.io/ai-architecture-charts/kaka-0.2.1+3.tgz
+    version: 0.2.1+3
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-10-17T01:58:52.703273797Z"
     description: A Helm chart for Kubernetes
     digest: f44a3bf06ea8a37b27d464b1c33c1093278564e3e7cf92fd12fdfeeb4a7c6cc3
     name: kaka
     type: application
     urls:
-    - https://yuvalturg.github.io/testrepo/kaka-0.2.1.tgz
+    - https://rh-ai-quickstart.github.io/ai-architecture-charts/kaka-0.2.1.tgz
     version: 0.2.1
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-09-11T17:59:43.630864168Z"
+    created: "2025-10-17T01:58:52.702599137Z"
     description: A Helm chart for Kubernetes
     digest: b711fd6081b78d72cac4de88f8f02ae8a78b42d06716a06b1c17daf02b74e37a
     name: kaka
     type: application
     urls:
-    - https://yuvalturg.github.io/testrepo/kaka-0.2.0.tgz
+    - https://rh-ai-quickstart.github.io/ai-architecture-charts/kaka-0.2.0.tgz
     version: 0.2.0
   pgvector:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-09-11T17:59:43.631935516Z"
+    created: "2025-10-17T01:58:52.703926667Z"
     description: A Helm chart for Kubernetes
     digest: 112380b447a49b9d1114c4c43babec994051792cd98a70bb83727908238d6b2b
     name: pgvector
     type: application
     urls:
-    - https://yuvalturg.github.io/testrepo/pgvector-0.2.0.tgz
+    - https://rh-ai-quickstart.github.io/ai-architecture-charts/pgvector-0.2.0.tgz
     version: 0.2.0
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-09-11T17:59:43.631589728Z"
+    created: "2025-10-17T01:58:52.703599185Z"
     description: A Helm chart for Kubernetes
     digest: 69a329069b72ded7f93e88fe0a33a3c58b8308b0427dfecb10ad523de8d7391e
     name: pgvector
     type: application
     urls:
-    - https://yuvalturg.github.io/testrepo/pgvector-0.1.0.tgz
+    - https://rh-ai-quickstart.github.io/ai-architecture-charts/pgvector-0.1.0.tgz
     version: 0.1.0
-generated: "2025-09-11T17:59:43.629626608Z"
+generated: "2025-10-17T01:58:52.700627542Z"
