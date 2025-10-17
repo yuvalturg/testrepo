@@ -2,8 +2,18 @@ apiVersion: v1
 entries:
   foo:
   - apiVersion: v2
+    appVersion: 0.2.6
+    created: "2025-10-17T13:16:33.078528983Z"
+    description: A Helm chart for Kubernetes
+    digest: 971eb5693809ec6cb8dd9af9ddb36ffab8b81745d8bb8e3e74b8c74d78da2fee
+    name: foo
+    type: application
+    urls:
+    - https://rh-ai-quickstart.github.io/ai-architecture-charts/foo-0.2.6.tgz
+    version: 0.2.6
+  - apiVersion: v2
     appVersion: 0.2.5
-    created: "2025-10-17T13:14:22.998894334Z"
+    created: "2025-10-17T13:16:33.07819202Z"
     description: A Helm chart for Kubernetes
     digest: 9f2158e3e70b8412d8cbdb3d7cb4733c21750880150fbd2ec3b6c3142476157e
     name: foo
@@ -13,7 +23,7 @@ entries:
     version: 0.2.5
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-10-17T13:14:22.99770465Z"
+    created: "2025-10-17T13:16:33.076992705Z"
     description: A Helm chart for Kubernetes
     digest: 8d3cefcea7d1650a54ab8852746f65c9958928bca44a04d20a5cba01fdc50fe2
     name: foo
@@ -23,7 +33,7 @@ entries:
     version: 0.2.0+3
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-10-17T13:14:22.99809871Z"
+    created: "2025-10-17T13:16:33.077423836Z"
     description: A Helm chart for Kubernetes
     digest: bf31aa8724250670b3d899352aa7e2527188d282e3e84f7fb83ce6f61cd065c1
     name: foo
@@ -33,7 +43,7 @@ entries:
     version: 0.2.0+4
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-10-17T13:14:22.998524149Z"
+    created: "2025-10-17T13:16:33.077826613Z"
     description: A Helm chart for Kubernetes
     digest: 3e36dc9db140f89e44e8bceccd23e1f19e27158b8285d0feb7bbbdaf7a5228bc
     name: foo
@@ -43,8 +53,18 @@ entries:
     version: 0.2.0
   gizmo:
   - apiVersion: v2
+    appVersion: 0.2.6
+    created: "2025-10-17T13:16:33.080913511Z"
+    description: A Helm chart for Kubernetes
+    digest: 747d63839372fb93245c3b15f52f4a3bb13e5ea79291a2da31eb4ddcca073188
+    name: gizmo
+    type: application
+    urls:
+    - https://rh-ai-quickstart.github.io/ai-architecture-charts/gizmo-0.2.6.tgz
+    version: 0.2.6
+  - apiVersion: v2
     appVersion: 0.2.5
-    created: "2025-10-17T13:14:23.000294904Z"
+    created: "2025-10-17T13:16:33.079935948Z"
     description: A Helm chart for Kubernetes
     digest: 478c365cbce40648b72fb55af2478fa0ca3c1de6de1da124b7e337b6cfa27ec6
     name: gizmo
@@ -54,7 +74,7 @@ entries:
     version: 0.2.5
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-10-17T13:14:22.99923835Z"
+    created: "2025-10-17T13:16:33.078906753Z"
     description: A Helm chart for Kubernetes
     digest: 19e9804df47b279defe6d3e16baeacca8ade213263cfbc3ee82ccc79d9582e1b
     name: gizmo
@@ -64,7 +84,7 @@ entries:
     version: 0.2.0+3
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-10-17T13:14:22.999618244Z"
+    created: "2025-10-17T13:16:33.079241463Z"
     description: A Helm chart for Kubernetes
     digest: d9325675c6a15bd683edcc789439827d4aa2c5eba160a335715b23f24401e562
     name: gizmo
@@ -74,7 +94,7 @@ entries:
     version: 0.2.0+4
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-10-17T13:14:22.999968972Z"
+    created: "2025-10-17T13:16:33.079578186Z"
     description: A Helm chart for Kubernetes
     digest: 432097654638b0a1c0ec5828c03b31d28aec5654380d03ca8d299edee0cce695
     name: gizmo
@@ -85,7 +105,7 @@ entries:
   kaka:
   - apiVersion: v2
     appVersion: 0.2.6
-    created: "2025-10-17T13:14:23.002946606Z"
+    created: "2025-10-17T13:16:33.082918Z"
     description: A Helm chart for Kubernetes
     digest: b90cfac213a4782430e9ffc9b53dfd1cb9663dbc40155765fd7969c5d93839bb
     name: kaka
@@ -95,7 +115,7 @@ entries:
     version: 0.2.6
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-10-17T13:14:23.000994087Z"
+    created: "2025-10-17T13:16:33.081888454Z"
     description: A Helm chart for Kubernetes
     digest: ff46632a718c7867624ac71a11047aba3e77d70ddb5e07b38a93c3a2ffa61469
     name: kaka
@@ -105,7 +125,7 @@ entries:
     version: 0.2.1+3
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-10-17T13:14:23.00151728Z"
+    created: "2025-10-17T13:16:33.082229735Z"
     description: A Helm chart for Kubernetes
     digest: be7785a867ef794c7f98544a8556ab9549d2102570698d536f2747e8b7aefe1c
     name: kaka
@@ -115,7 +135,7 @@ entries:
     version: 0.2.1+4
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-10-17T13:14:23.002552226Z"
+    created: "2025-10-17T13:16:33.082567591Z"
     description: A Helm chart for Kubernetes
     digest: f44a3bf06ea8a37b27d464b1c33c1093278564e3e7cf92fd12fdfeeb4a7c6cc3
     name: kaka
@@ -125,7 +145,7 @@ entries:
     version: 0.2.1
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-10-17T13:14:23.000641545Z"
+    created: "2025-10-17T13:16:33.081505484Z"
     description: A Helm chart for Kubernetes
     digest: b711fd6081b78d72cac4de88f8f02ae8a78b42d06716a06b1c17daf02b74e37a
     name: kaka
@@ -136,7 +156,7 @@ entries:
   pgvector:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-10-17T13:14:23.003678972Z"
+    created: "2025-10-17T13:16:33.083670273Z"
     description: A Helm chart for Kubernetes
     digest: 112380b447a49b9d1114c4c43babec994051792cd98a70bb83727908238d6b2b
     name: pgvector
@@ -146,7 +166,7 @@ entries:
     version: 0.2.0
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-10-17T13:14:23.003303326Z"
+    created: "2025-10-17T13:16:33.083310436Z"
     description: A Helm chart for Kubernetes
     digest: 69a329069b72ded7f93e88fe0a33a3c58b8308b0427dfecb10ad523de8d7391e
     name: pgvector
@@ -154,4 +174,4 @@ entries:
     urls:
     - https://rh-ai-quickstart.github.io/ai-architecture-charts/pgvector-0.1.0.tgz
     version: 0.1.0
-generated: "2025-10-17T13:14:22.997083043Z"
+generated: "2025-10-17T13:16:33.076412334Z"
