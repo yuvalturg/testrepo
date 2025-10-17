@@ -232,7 +232,7 @@ jobs:
 
   build-and-push:
     needs: [construct-build-matrix, update-versions-and-tag]
-    if: github.repository == 'rh-ai-quickstart/ai-architecture-charts' && needs.construct-build-matrix.outputs.has-builds == 'true'
+    if: needs.construct-build-matrix.outputs.has-builds == 'true'
     runs-on: ubuntu-latest
     strategy:
       matrix: ${{ fromJson(needs.construct-build-matrix.outputs.build-matrix) }}
