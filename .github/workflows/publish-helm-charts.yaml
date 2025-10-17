@@ -210,9 +210,9 @@ jobs:
             tag_name="${component}-${new_version}"
             git tag -a "$tag_name" -m "Release ${component} version ${new_version}
 
-Version: ${new_version}
-App version: ${app_version}
-Commit: $(git rev-parse --short HEAD)"
+            Version: ${new_version}
+            App version: ${app_version}
+            Commit: $(git rev-parse --short HEAD)"
 
             echo "Created commit and tag: $tag_name (SHA: $COMMIT_SHA)"
           done
